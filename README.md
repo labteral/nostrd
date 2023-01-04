@@ -1,9 +1,12 @@
-# python-package
-Python Package Boilerplate
+# nostrd
+WIP. Implements NIP-43. Works as a facade for other relays (for now).
 
-## Usage
+## Installation
+```bash
+python setup.py install
 ```
-git clone https://github.com/brunneis/python-package
-cd python-package
-./rename.sh
+
+## Run
+```bash
+NOSTRD_RELAY_URL='wss://example.com' python -m nostrd
 ```

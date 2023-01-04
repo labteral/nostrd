@@ -3,15 +3,15 @@
 
 from setuptools import setup
 from setuptools import find_packages
-import package_name
+import nostrd
 
 setup(
-    name='package_name',
-    version=package_name.__version__,
-    description='description_value',
-    url='url_value',
-    author='author_value',
-    author_email='email_value',
+    name='nostrd',
+    version=nostrd.__version__,
+    description='Yet another Nostr relay',
+    url='https://github.com/brunneis/nostrd',
+    author='Rodrigo Martínez Castaño',
+    author_email='rodrigo@martinez.gal',
     license='GNU General Public License v3 (GPLv3)',
     packages=find_packages(),
     zip_safe=False,
@@ -26,5 +26,17 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     python_requires=">=3.6",
-    install_requires=['']
-)  # Dependencies
+    install_requires=[
+        'requests',
+        'nostr',
+        'bech32',
+        'secp256k1',
+        'digsig',
+        'websockets',
+    ],
+    entry_points={
+        'console_scripts': [
+            'nostrd = nostrd.__main__:main',
+        ],
+    }
+)

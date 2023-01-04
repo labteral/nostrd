@@ -1,1 +1,6 @@
-twine
+requests
+nostr
+bech32
+secp256k1
+digsig
+websockets

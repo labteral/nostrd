@@ -2,6 +2,7 @@ import requests
 import bech32
 from digsig.hashing import hash_message, HashFunctions
 from enum import Enum
+import hashlib
 from . import env
 
 
@@ -57,13 +58,15 @@ def get_address_from_public_key(
     if witness_program is None:
         witness_program = WitnessProgram.P2WSH.value
 
-    address = hash_message(prefix + public_key, HashFunctions.SHA256)
-    address = hash_message(address, HashFunctions.RIPEMD160)
+    sha256_hash = hashlib.sha256(prefix + public_key).digest()
+    ripemd160 = hashlib.new("ripemd160")
+    ripemd160.update(sha256_hash)
+    address_bytes = ripemd160.digest()
 
     address = bech32.encode(
         human_readable_part,
         witness_program,
-        address,
+        address_bytes,
     )
 
     return address

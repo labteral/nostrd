@@ -31,7 +31,6 @@ setup(
         'nostr',
         'bech32',
         'secp256k1',
-        'digsig',
         'websockets',
     ],
     entry_points={
